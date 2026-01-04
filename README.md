@@ -68,6 +68,14 @@ Cremieux uses licensing data as population proxy, but:
 | **+ Pop 2× (Conservative)** | Above + 2× under-registration | **2.59×** |
 | **+ Pop 4× (Evidence-Based)** | Above + 4× under-registration | **1.30×** |
 
+### What This Means
+
+With corrections applied, pit bulls have a relative risk of **1.30× - 2.59×**, which is:
+- **Less than** Mastiff (8.49×), Rottweiler (8.52×), Doberman (4.67×), and Chow Chow (4.61×)
+- **Still 1.5-3× higher** than low-risk breeds like Shih Tzu (0.85×) or Maltese (1.0× baseline)
+
+The corrected risk places pit bulls in the **middle of the pack**, not as extreme outliers.
+
 ### How Bite Redistribution Works
 
 When we correct for the 2.5× over-identification, 3,793 bites are removed from pit bulls and redistributed to big dogs + Unknown proportionally **by their original bite counts**:
