@@ -64,32 +64,32 @@ Cremieux uses licensing data as population proxy, but:
 | Scenario | Correction | Pit Bull RR |
 |----------|------------|-------------|
 | **Cremieux Original** | None | **12.96×** |
-| **+ Bite Misattribution** | 2.5× over-ID, redistributed to lookalikes | **5.18×** (Rank #4) |
+| **+ Bite Misattribution** | 2.5× over-ID, redistributed to lookalikes + Unknown | **5.18×** (Rank #3) |
 | **+ Pop 2× (Conservative)** | Above + 2× under-registration | **2.59×** |
 | **+ Pop 4× (Evidence-Based)** | Above + 4× under-registration | **1.30×** |
 
 ### How Bite Redistribution Works
 
-When we correct for the 2.5× over-identification, 3,793 bites are removed from pit bulls and redistributed to visually similar breeds proportionally by population:
+When we correct for the 2.5× over-identification, 3,793 bites are removed from pit bulls and redistributed to big dogs + Unknown proportionally **by their original bite counts**:
 
-| Breed | Original Bites | + Redistributed | New Total |
-|-------|----------------|-----------------|-----------|
-| Labrador Retriever | 659 | +1,644 | 2,303 |
-| German Shepherd | 852 | +693 | 1,545 |
-| Bull Terrier | 61 | +578 | 639 |
-| Rottweiler | 404 | +128 | 532 |
-| Boxer | 184 | +238 | 422 |
-| **Pit Bull** | 6,321 | **−3,793** | **2,528** |
+| Category | Original Bites | Share | + Redistributed |
+|----------|----------------|-------|-----------------|
+| Unknown | 6,206 | 64.9% | +2,462 |
+| German Shepherd | 852 | 8.9% | +338 |
+| Siberian Husky | 505 | 5.3% | +200 |
+| Rottweiler | 404 | 4.2% | +170 |
+| Labrador Retriever | 659 | 6.9% | +277 |
+| **Pit Bull** | 6,321 | — | **−3,793** |
 
 ### After Bite Redistribution: New Rankings
 
 | Rank | Original | After Correction |
 |------|----------|------------------|
-| 1 | Pit Bull (12.96×) | Rottweiler (7.91×) |
-| 2 | Rottweiler (6.00×) | Mastiff (7.89×) |
-| 3 | Mastiff (5.98×) | Doberman Pinscher (5.19×) |
-| 4 | Chow Chow (4.61×) | **Pit Bull (5.18×)** |
-| 5 | Akita (4.09×) | Cane Corso (5.06×) |
+| 1 | Pit Bull (12.96×) | Rottweiler (8.52×) |
+| 2 | Rottweiler (6.00×) | Mastiff (8.49×) |
+| 3 | Mastiff (5.98×) | **Pit Bull (5.18×)** |
+| 4 | Chow Chow (4.61×) | Doberman Pinscher (4.67×) |
+| 5 | Akita (4.09×) | Chow Chow (4.61×) |
 
 ### Step-by-Step Math Verification
 
@@ -100,7 +100,7 @@ Maltese Risk  = 581 / 25,901 = 0.0224
 Relative Risk = 0.2908 / 0.0224 = 12.96×
 ```
 
-**After Bite Correction (redistribute 3,793 misattributed bites)**
+**After Bite Correction (redistribute to lookalikes + Unknown by bite share)**
 ```
 True Pit Bull Bites = 6,321 / 2.5 = 2,528
 Pit Bull Risk = 2,528 / 21,739 = 0.1163
@@ -123,7 +123,7 @@ Relative Risk = 0.0291 / 0.0224 = 1.30×
 
 > **Why Maltese is unchanged**: Maltese are not commonly misidentified as other breeds, and Maltese owners don't face breed-specific registration barriers.
 
-> **Where do the misattributed bites come from?** The 3,793 bites misattributed to pit bulls came from visually similar breeds: Boxers, Bulldogs, Mastiffs, Bull Terriers, etc. A 4-7 lb white fluffy Maltese would never be misidentified as a 30-60 lb muscular pit bull, so the Maltese baseline remains valid for this comparison.
+> **Why include Unknown?** Most misattributed bites go to Unknown (65%) because when a dog isn't easily identified, it's often called a pit bull. The redistribution reflects that many "pit bull" reports should have been "unknown."
 
 **Full analysis**: [`corrected_risk_analysis.md`](corrected_risk_analysis.md)
 

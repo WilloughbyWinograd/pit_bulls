@@ -288,23 +288,53 @@ def main():
     print(f"    True Pit Bull bites: {pb_true_bites:.0f}")
     print(f"    Misattributed bites: {misattributed_bites:.0f}")
     
-    # --- Calculate big dog population share ---
-    big_dog_total_licenses = sum(license_counts.get(b, 0) for b in BIG_DOG_BREEDS)
-    print(f"\n[5] Redistributing to big dogs (proportional to population)")
-    print(f"    Big dog breeds: {len([b for b in BIG_DOG_BREEDS if b in license_counts])}")
-    print(f"    Big dog total licenses: {big_dog_total_licenses}")
+    # --- Calculate redistribution pool (big dogs + Unknown) based on BITES ---
+    # We need to track Unknown bites separately
+    unknown_bites = 0
+    with open(BITE_CSV, 'r', encoding='utf-8', errors='replace') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            date_str = row.get('DateOfBite', '')
+            try:
+                if ',' in date_str:
+                    year = int(date_str.split(',')[-1].strip())
+                    if year < MIN_BITE_YEAR or year > MAX_BITE_YEAR:
+                        continue
+            except ValueError:
+                continue
+            breed = row.get('Breed', '').strip().upper()
+            if not breed or 'UNKNOWN' in breed or breed == 'MIXED':
+                unknown_bites += 1
     
-    # --- Redistribute misattributed bites ---
+    # Calculate big dog bites total (from bite_counts, excluding pit bull)
+    big_dog_bites = sum(bite_counts.get(b, 0) for b in BIG_DOG_BREEDS)
+    
+    # Total redistribution pool = big dogs + unknown
+    redistribution_pool_bites = big_dog_bites + unknown_bites
+    
+    print(f"\n[5] Redistributing to big dogs + Unknown (proportional to BITES)")
+    print(f"    Big dog bites: {big_dog_bites}")
+    print(f"    Unknown bites: {unknown_bites}")
+    print(f"    Total redistribution pool: {redistribution_pool_bites}")
+    
+    # --- Redistribute misattributed bites proportional to original bites ---
     corrected_bites = dict(bite_counts)
     corrected_bites['Pit Bull'] = pb_true_bites
+    corrected_bites['Unknown'] = unknown_bites  # Add Unknown to our tracking
     
-    print("\n    Redistribution:")
+    print("\n    Redistribution by bite proportion:")
     for breed in sorted(BIG_DOG_BREEDS):
-        if breed in license_counts and license_counts[breed] > 0:
-            proportion = license_counts[breed] / big_dog_total_licenses
+        if breed in bite_counts and bite_counts[breed] > 0:
+            proportion = bite_counts[breed] / redistribution_pool_bites
             additional_bites = misattributed_bites * proportion
             corrected_bites[breed] = corrected_bites.get(breed, 0) + additional_bites
-            print(f"      {breed}: +{additional_bites:.0f} → {corrected_bites[breed]:.0f} total")
+            print(f"      {breed}: {bite_counts[breed]} bites ({proportion*100:.1f}%) → +{additional_bites:.0f}")
+    
+    # Unknown gets its share too
+    unknown_proportion = unknown_bites / redistribution_pool_bites
+    unknown_additional = misattributed_bites * unknown_proportion
+    corrected_bites['Unknown'] = unknown_bites + unknown_additional
+    print(f"      Unknown: {unknown_bites} bites ({unknown_proportion*100:.1f}%) → +{unknown_additional:.0f}")
     
     # --- Calculate CORRECTED relative risk ---
     print("\n[6] Calculating CORRECTED relative risk...")
