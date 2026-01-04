@@ -67,6 +67,35 @@ Cremieux uses licensing data as population proxy, but:
 | Conservative | 2.5× | 2× | **2.52×** |
 | Evidence-Based | 2.5× | 4× | **1.26×** |
 
+### Step-by-Step Math Verification
+
+**Original (Cremieux)**
+```
+Pit Bull Risk = 6,053 / 21,915 = 0.2762
+Maltese Risk  = 469 / 21,363 = 0.0220
+Relative Risk = 0.2762 / 0.0220 = 12.59×
+```
+
+**Conservative (2.5× bite overcount, 2× population undercount)**
+```
+True Pit Bull Bites = 6,053 / 2.5 = 2,421
+True Pit Bull Pop   = 21,915 × 2 = 43,830
+True Pit Bull Risk  = 2,421 / 43,830 = 0.0552
+Maltese Risk        = 0.0220 (unchanged)
+Corrected RR        = 0.0552 / 0.0220 = 2.52×
+```
+
+**Evidence-Based (2.5× bite overcount, 4× population undercount)**
+```
+True Pit Bull Bites = 6,053 / 2.5 = 2,421
+True Pit Bull Pop   = 21,915 × 4 = 87,660
+True Pit Bull Risk  = 2,421 / 87,660 = 0.0276
+Maltese Risk        = 0.0220 (unchanged)
+Corrected RR        = 0.0276 / 0.0220 = 1.26×
+```
+
+> **Why Maltese is unchanged**: Maltese are not commonly misidentified as other breeds, and Maltese owners don't face breed-specific registration barriers.
+
 **Full analysis**: [`corrected_risk_analysis.md`](corrected_risk_analysis.md)
 
 ---
