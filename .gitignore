@@ -2,4 +2,5 @@
 *.csv
 *.xlsx
 *.pdf
+!The_Dogs_of_New_York.pdf
 __pycache__/
