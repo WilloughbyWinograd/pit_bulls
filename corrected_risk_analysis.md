@@ -87,7 +87,6 @@ Where N = population under-count factor (2, 2.5, or 4)
 |----------|-----------------|----------------------|-----------------|------------------------|
 | **Original (Cremieux)** | 1× | 1× | 1× | **12.59×** |
 | **Conservative** | 2.5× | 2× | 5× | **2.52×** |
-| **Moderate** | 2.5× | 2.5× | 6.25× | **2.01×** |
 | **Evidence-Based** | 2.5× | 4× | 10× | **1.26×** |
 
 ---
@@ -106,17 +105,7 @@ Maltese Risk = 469 ÷ 21,363 = 0.0220 (unchanged)
 Corrected Relative Risk = 0.0552 ÷ 0.0220 = 2.52×
 ```
 
-### Scenario 2: Moderate (2.5× population under-count)
-
-```
-True Pit Bull Bites = 6,053 ÷ 2.5 = 2,421
-True Pit Bull Population = 21,915 × 2.5 = 54,788
-True Pit Bull Risk = 2,421 ÷ 54,788 = 0.0442
-
-Corrected Relative Risk = 0.0442 ÷ 0.0220 = 2.01×
-```
-
-### Scenario 3: Evidence-Based (4× population under-count)
+### Scenario 2: Evidence-Based (4× population under-count)
 
 ```
 True Pit Bull Bites = 6,053 ÷ 2.5 = 2,421
@@ -134,8 +123,6 @@ Corrected Relative Risk = 0.0276 ÷ 0.0220 = 1.26×
 Cremieux's Claim:     ████████████████████████████████████████████████████ 12.59×
 
 Conservative (2×):    ██████████ 2.52×
-
-Moderate (2.5×):      ████████ 2.01×
 
 Evidence-Based (4×):  █████ 1.26×
 ```
