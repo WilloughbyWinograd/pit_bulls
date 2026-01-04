@@ -96,6 +96,8 @@ Corrected RR        = 0.0276 / 0.0220 = 1.26×
 
 > **Why Maltese is unchanged**: Maltese are not commonly misidentified as other breeds, and Maltese owners don't face breed-specific registration barriers.
 
+> **Where do the misattributed bites come from?** The 3,632 bites misattributed to pit bulls (6,053 - 2,421) likely came from visually similar breeds: Boxers, American Bulldogs, Mastiffs, Bull Terriers, and mixed breeds. A 4-7 lb white fluffy Maltese would never be misidentified as a 30-60 lb muscular pit bull, so the Maltese baseline remains valid for this comparison.
+
 **Full analysis**: [`corrected_risk_analysis.md`](corrected_risk_analysis.md)
 
 ---
