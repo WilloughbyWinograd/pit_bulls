@@ -4,60 +4,60 @@ Analysis recreating findings from 'The Dogs of New York' using both Bite and Lic
 
 ## Risk Analysis Findings
 ### Pit Bull vs. Maltese Relative Risk
-- **Pit Bull Risk**: 0.2142 bites per license
-- **Maltese Risk**: 0.0215 bites per license
-- **Relative Risk**: **9.96x**
+- **Pit Bull Risk**: 0.7389 bites per license
+- **Maltese Risk**: 0.0820 bites per license
+- **Relative Risk**: **9.01x**
 
 > This calculates how much more likely a Pit Bull is to bite compared to a Maltese, given their registered populations.
-> **Verification**: The original article claims ~12.59x. Our calculated value is 9.96x.
+> **Verification**: The original article claims ~12.59x. Our calculated value is 9.01x.
 
 ## Top 20 High-Risk Breeds
 | Rank | Breed | Risk (Bites/License) | Bites | Licenses |
 |---|---|---|---|---|
-| 1 | Corgi | 0.3147 | 79 | 251 |
-| 2 | Hound | 0.2714 | 73 | 269 |
-| 3 | Pit Bull | 0.2142 | 7911 | 36941 |
-| 4 | Saint Bernard | 0.1698 | 27 | 159 |
-| 5 | Rottweiler | 0.1685 | 537 | 3186 |
-| 6 | Mastiff | 0.1568 | 166 | 1059 |
-| 7 | Akita | 0.1064 | 93 | 874 |
-| 8 | Chow Chow | 0.0936 | 106 | 1133 |
-| 9 | Cane Corso | 0.0866 | 108 | 1247 |
-| 10 | Doberman Pinscher | 0.0797 | 114 | 1430 |
-| 11 | German Pinscher | 0.0783 | 9 | 115 |
-| 12 | Siberian Husky | 0.0754 | 687 | 9113 |
-| 13 | Belgian Malinois | 0.0753 | 54 | 717 |
-| 14 | Great Dane | 0.0691 | 60 | 868 |
-| 15 | Dalmatian | 0.0667 | 43 | 645 |
-| 16 | Collie, Border | 0.0596 | 53 | 890 |
-| 17 | Bull Terrier | 0.0594 | 65 | 1094 |
-| 18 | German Shepherd | 0.0520 | 1503 | 28894 |
-| 19 | Bulldog | 0.0465 | 890 | 19142 |
-| 20 | Weimaraner | 0.0385 | 29 | 753 |
+| 1 | Pit Bull | 0.7389 | 6329 | 8565 |
+| 2 | Mastiff | 0.5907 | 140 | 237 |
+| 3 | Rottweiler | 0.5647 | 406 | 719 |
+| 4 | Akita | 0.3636 | 72 | 198 |
+| 5 | Chow Chow | 0.3381 | 95 | 281 |
+| 6 | Collie, Border | 0.3083 | 41 | 133 |
+| 7 | Cane Corso | 0.2801 | 79 | 282 |
+| 8 | Doberman Pinscher | 0.2716 | 88 | 324 |
+| 9 | Belgian Malinois | 0.1979 | 38 | 192 |
+| 10 | Bull Terrier | 0.1950 | 55 | 282 |
+| 11 | Siberian Husky | 0.1868 | 500 | 2676 |
+| 12 | Great Dane | 0.1780 | 47 | 264 |
+| 13 | Dalmatian | 0.1734 | 30 | 173 |
+| 14 | West High White Terrier | 0.1477 | 44 | 298 |
+| 15 | German Shepherd | 0.1433 | 1149 | 8019 |
+| 16 | Dachshund Smooth Coat | 0.1392 | 70 | 503 |
+| 17 | Bulldog | 0.1313 | 646 | 4919 |
+| 18 | Weimaraner | 0.1277 | 24 | 188 |
+| 19 | Wheaton Terrier | 0.1225 | 43 | 351 |
+| 20 | Newfoundland | 0.1200 | 12 | 100 |
 
 ## Top 20 Biting Breeds (Frequency)
 | Rank | Breed | Bites | % of Total Known |
 |---|---|---|---|
-| 1 | Pit Bull | 7911 | 34.2% |
-| 2 | German Shepherd | 1503 | 6.5% |
-| 3 | Shih Tzu | 1208 | 5.2% |
-| 4 | Chihuahua | 1137 | 4.9% |
-| 5 | Bulldog | 890 | 3.8% |
-| 6 | Labrador Retriever | 835 | 3.6% |
-| 7 | Yorkshire Terrier | 797 | 3.4% |
-| 8 | Poodle | 734 | 3.2% |
-| 9 | Siberian Husky | 687 | 3.0% |
-| 10 | Maltese | 599 | 2.6% |
-| 11 | Rottweiler | 537 | 2.3% |
-| 12 | Terrier | 364 | 1.6% |
-| 13 | Beagle | 320 | 1.4% |
-| 14 | Jack Russell Terrier | 320 | 1.4% |
-| 15 | Cocker Spaniel | 234 | 1.0% |
-| 16 | Golden Retriever | 212 | 0.9% |
-| 17 | Boxer | 197 | 0.9% |
-| 18 | Pomeranian | 187 | 0.8% |
-| 19 | Shiba Inu | 187 | 0.8% |
-| 20 | Mastiff | 166 | 0.7% |
+| 1 | Pit Bull | 6329 | 34.0% |
+| 2 | German Shepherd | 1149 | 6.2% |
+| 3 | Shih Tzu | 1017 | 5.5% |
+| 4 | Chihuahua | 963 | 5.2% |
+| 5 | Labrador Retriever | 678 | 3.6% |
+| 6 | Yorkshire Terrier | 662 | 3.6% |
+| 7 | Bulldog | 646 | 3.5% |
+| 8 | Poodle | 593 | 3.2% |
+| 9 | Maltese | 514 | 2.8% |
+| 10 | Siberian Husky | 500 | 2.7% |
+| 11 | Rottweiler | 406 | 2.2% |
+| 12 | Terrier | 306 | 1.6% |
+| 13 | Jack Russell Terrier | 280 | 1.5% |
+| 14 | Beagle | 273 | 1.5% |
+| 15 | Cocker Spaniel | 198 | 1.1% |
+| 16 | Boxer | 174 | 0.9% |
+| 17 | Golden Retriever | 170 | 0.9% |
+| 18 | Shiba Inu | 146 | 0.8% |
+| 19 | Pomeranian | 143 | 0.8% |
+| 20 | Mastiff | 140 | 0.8% |
 
 ## Visualizations
 ### Bite Risk (Bites per 1,000 Licenses)

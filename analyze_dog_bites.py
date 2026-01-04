@@ -230,10 +230,25 @@ def main():
     bite_counts = Counter()
     total_bites = 0
     
-    print(f"Loading bite data from {INPUT_CSV}...")
+    # Cremieux likely accepted data through 2022. limiting to match.
+    MAX_YEAR = 2022
+    
+    print(f"Loading bite data from {INPUT_CSV} (Filtering <= {MAX_YEAR})...")
     with open(INPUT_CSV, 'r', encoding='utf-8', errors='replace') as f:
         reader = csv.DictReader(f)
         for row in reader:
+            date_str = row.get('DateOfBite', '')
+            try:
+                # Format is "January 01, 2018"
+                # Simple parsing: split by space, take last part as year
+                if ',' in date_str:
+                    year = int(date_str.split(',')[-1].strip())
+                    if year > MAX_YEAR:
+                        continue
+            except ValueError:
+                pass 
+                # If date parse fails, include.
+            
             raw_breed = row.get('Breed', '')
             clean = clean_breed(raw_breed)
             
@@ -242,23 +257,48 @@ def main():
                 bite_counts[clean] += 1
                 total_bites += 1
 
-    # --- 2. Process Licensing Data ---
+    # --- 2. Process Licensing Data (Strict 2022 Population) ---
     LICENSE_CSV = "NYC_Dog_Licensing_Dataset_20260103.csv"
     license_counts = Counter()
     total_licenses = 0
+    TARGET_POP_YEAR = 2022
 
-    print(f"Loading licensing data from {LICENSE_CSV}...")
+    print(f"Loading licensing data from {LICENSE_CSV} (Active in {TARGET_POP_YEAR})...")
     try:
         with open(LICENSE_CSV, 'r', encoding='utf-8', errors='replace') as f:
             reader = csv.DictReader(f)
             for row in reader:
-                # The column name in the provided file is "BreedName"
-                raw_breed = row.get('BreedName', '')
-                clean = clean_breed(raw_breed)
+                # Column check
+                if 'LicenseIssuedDate' not in row or 'LicenseExpiredDate' not in row:
+                    continue
+                    
+                issued_str = row['LicenseIssuedDate']
+                expired_str = row['LicenseExpiredDate']
                 
-                if clean not in ["Unknown", "Mixed/Other"]:
-                    license_counts[clean] += 1
-                    total_licenses += 1
+                try:
+                    # Date Format: "09/12/2014" (MM/DD/YYYY)
+                    # We only need the year, or convert to comparable dates
+                    # Simple check: valid in target year if Issued <= 2022 and Expired >= 2022
+                   
+                    # Helper to get year
+                    def get_year(d_str):
+                        return int(d_str.split('/')[-1])
+                        
+                    issued_year = get_year(issued_str)
+                    expired_year = get_year(expired_str)
+                    
+                    # Logic: Was it active at any point in 2022?
+                    # Active if Issued <= 2022 AND Expired >= 2022
+                    if issued_year <= TARGET_POP_YEAR and expired_year >= TARGET_POP_YEAR:
+                        raw_breed = row.get('BreedName', '')
+                        clean = clean_breed(raw_breed)
+                        if clean not in ["Unknown", "Mixed/Other"]:
+                            license_counts[clean] += 1
+                            total_licenses += 1
+                            
+                except (ValueError, IndexError):
+                    continue
+
     except FileNotFoundError:
         print(f"Error: {LICENSE_CSV} not found. Skipping risk analysis.")
         return
